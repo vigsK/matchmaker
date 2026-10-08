@@ -1,0 +1,226 @@
+[0m[1mrandom_password.mysql: Creating...[0m[0m
+[0m[1mrandom_password.pg: Creating...[0m[0m
+[0m[1mrandom_password.mysql: Creation complete after 1s [id=none][0m
+[0m[1mrandom_password.pg: Creation complete after 1s [id=none][0m
+[0m[1maws_sns_topic.results: Creating...[0m[0m
+[0m[1maws_vpc.main: Creating...[0m[0m
+[0m[1maws_ecs_cluster.main: Creating...[0m[0m
+[0m[1maws_secretsmanager_secret.mysql: Creating...[0m[0m
+[0m[1maws_cloudwatch_log_group.codebuild: Creating...[0m[0m
+[0m[1maws_secretsmanager_secret.pg: Creating...[0m[0m
+[0m[1maws_cloudwatch_log_group.ecs: Creating...[0m[0m
+[0m[1maws_cloudwatch_log_group.sfn: Creating...[0m[0m
+[0m[1maws_iam_role.sfn: Creating...[0m[0m
+[0m[1maws_iam_role.scheduler: Creating...[0m[0m
+[0m[1maws_secretsmanager_secret.mysql: Creation complete after 2s [id=arn:aws:secretsmanager:us-east-1:604723771349:secret:qmatch/mysql-jlibVn][0m
+[0m[1maws_secretsmanager_secret.pg: Creation complete after 2s [id=arn:aws:secretsmanager:us-east-1:604723771349:secret:qmatch/postgres-qgWybm][0m
+[0m[1maws_eip.nat: Creating...[0m[0m
+[0m[1maws_ecr_repository.app: Creating...[0m[0m
+[0m[1maws_cloudwatch_log_group.ecs: Creation complete after 2s [id=/ecs/qmatch][0m
+[0m[1maws_iam_role.ecs_execution: Creating...[0m[0m
+[0m[1maws_cloudwatch_log_group.codebuild: Creation complete after 2s [id=/codebuild/qmatch][0m
+[0m[1maws_iam_role.ecs_task: Creating...[0m[0m
+[0m[1maws_cloudwatch_log_group.sfn: Creation complete after 3s [id=/aws/states/qmatch][0m
+[0m[1maws_iam_role.codebuild: Creating...[0m[0m
+[0m[1maws_iam_role.scheduler: Creation complete after 3s [id=qmatch-scheduler][0m
+[0m[1maws_iam_role.sfn: Creation complete after 3s [id=qmatch-sfn][0m
+[0m[1maws_iam_role_policy.scheduler: Creating...[0m[0m
+[0m[1maws_s3_bucket.main: Creating...[0m[0m
+[0m[1maws_sns_topic.results: Creation complete after 4s [id=arn:aws:sns:us-east-1:604723771349:qmatch-results][0m
+[0m[1maws_iam_role_policy.scheduler: Creation complete after 1s [id=qmatch-scheduler:qmatch-scheduler][0m
+[0m[1maws_ecr_repository.app: Creation complete after 2s [id=qmatch-app][0m
+[0m[1maws_ecr_lifecycle_policy.app: Creating...[0m[0m
+[0m[1maws_iam_role.codebuild: Creation complete after 1s [id=qmatch-codebuild][0m
+[0m[1maws_iam_role.ecs_execution: Creation complete after 2s [id=qmatch-ecs-execution][0m
+[0m[1maws_iam_role.ecs_task: Creation complete after 2s [id=qmatch-ecs-task][0m
+[0m[1maws_iam_role_policy_attachment.ecs_execution: Creating...[0m[0m
+[0m[1maws_ecr_lifecycle_policy.app: Creation complete after 1s [id=qmatch-app][0m
+[0m[1maws_iam_role_policy_attachment.ecs_execution: Creation complete after 1s [id=qmatch-ecs-execution-20260624033554541400000003][0m
+[0m[1maws_eip.nat: Creation complete after 4s [id=eipalloc-0f308a031215e9b87][0m
+[0m[1maws_s3_bucket.main: Creation complete after 6s [id=qmatch-604723771349-us-east-1][0m
+[0m[1maws_vpc.main: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_ecs_cluster.main: Still creating... [00m10s elapsed][0m[0m
+[0m[1mdata.aws_iam_policy_document.ecs_task: Reading...[0m[0m
+[0m[1mdata.aws_iam_policy_document.codebuild: Reading...[0m[0m
+[0m[1maws_s3_bucket_server_side_encryption_configuration.main: Creating...[0m[0m
+[0m[1maws_s3_bucket_public_access_block.main: Creating...[0m[0m
+[0m[1maws_s3_bucket_versioning.main: Creating...[0m[0m
+[0m[1maws_s3_object.queries_excel: Creating...[0m[0m
+[0m[1maws_s3_object.source_zip: Creating...[0m[0m
+[0m[1mdata.aws_iam_policy_document.ecs_task: Read complete after 0s [id=3050377486][0m
+[0m[1mdata.aws_iam_policy_document.codebuild: Read complete after 0s [id=2197786145][0m
+[0m[1maws_ecs_task_definition.app: Creating...[0m[0m
+[0m[1mdata.aws_iam_policy_document.sfn: Reading...[0m[0m
+[0m[1maws_s3_object.dockerfile: Creating...[0m[0m
+[0m[1mdata.aws_iam_policy_document.sfn: Read complete after 0s [id=4024684002][0m
+[0m[1maws_iam_role_policy.ecs_task: Creating...[0m[0m
+[0m[1maws_s3_object.queries_excel: Creation complete after 2s [id=input/queries.xlsx][0m
+[0m[1maws_iam_role_policy.codebuild: Creating...[0m[0m
+[0m[1maws_s3_bucket_public_access_block.main: Creation complete after 2s [id=qmatch-604723771349-us-east-1][0m
+[0m[1maws_iam_role_policy.sfn: Creating...[0m[0m
+[0m[1maws_s3_bucket_server_side_encryption_configuration.main: Creation complete after 2s [id=qmatch-604723771349-us-east-1][0m
+[0m[1maws_s3_object.source_zip: Creation complete after 2s [id=build/source.zip][0m
+[0m[1maws_codebuild_project.image: Creating...[0m[0m
+[0m[1maws_s3_object.dockerfile: Creation complete after 1s [id=docker/Dockerfile][0m
+[0m[1maws_iam_role_policy.ecs_task: Creation complete after 1s [id=qmatch-ecs-task:qmatch-ecs-task][0m
+[0m[1maws_iam_role_policy.codebuild: Creation complete after 1s [id=qmatch-codebuild:qmatch-codebuild][0m
+[0m[1maws_iam_role_policy.sfn: Creation complete after 1s [id=qmatch-sfn:qmatch-sfn][0m
+[0m[1maws_ecs_cluster.main: Creation complete after 13s [id=arn:aws:ecs:us-east-1:604723771349:cluster/qmatch-cluster][0m
+[0m[1maws_ecs_cluster_capacity_providers.main: Creating...[0m[0m
+[0m[1maws_ecs_task_definition.app: Creation complete after 2s [id=qmatch-task][0m
+[0m[1maws_s3_bucket_versioning.main: Creation complete after 3s [id=qmatch-604723771349-us-east-1][0m
+[0m[1maws_codebuild_project.image: Creation complete after 2s [id=arn:aws:codebuild:us-east-1:604723771349:project/qmatch-image-build][0m
+[0m[1maws_vpc.main: Creation complete after 17s [id=vpc-010c96ff0ca2161ac][0m
+[0m[1maws_internet_gateway.igw: Creating...[0m[0m
+[0m[1maws_subnet.private[0]: Creating...[0m[0m
+[0m[1maws_subnet.public[0]: Creating...[0m[0m
+[0m[1maws_subnet.private[1]: Creating...[0m[0m
+[0m[1maws_subnet.public[1]: Creating...[0m[0m
+[0m[1maws_security_group.fargate: Creating...[0m[0m
+[0m[1maws_subnet.private[0]: Creation complete after 2s [id=subnet-03f0a48afb9906e41][0m
+[0m[1maws_subnet.private[1]: Creation complete after 2s [id=subnet-0f9e55ccfab82b38b][0m
+[0m[1maws_db_subnet_group.main: Creating...[0m[0m
+[0m[1maws_internet_gateway.igw: Creation complete after 2s [id=igw-0b0d5227c3385b020][0m
+[0m[1maws_route_table.public: Creating...[0m[0m
+[0m[1maws_route_table.public: Creation complete after 3s [id=rtb-01d3f2ef01b964b50][0m
+[0m[1maws_db_subnet_group.main: Creation complete after 3s [id=qmatch-db-subnets][0m
+[0m[1maws_security_group.fargate: Creation complete after 5s [id=sg-006c689a9697bb0cc][0m
+[0m[1maws_security_group.pg: Creating...[0m[0m
+[0m[1maws_security_group.mysql: Creating...[0m[0m
+[0m[1maws_ecs_cluster_capacity_providers.main: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_sfn_state_machine.consistency: Creating...[0m[0m
+[0m[1maws_ecs_cluster_capacity_providers.main: Creation complete after 12s [id=qmatch-cluster][0m
+[0m[1maws_sfn_state_machine.consistency: Creation complete after 2s [id=arn:aws:states:us-east-1:604723771349:stateMachine:qmatch-consistency][0m
+[0m[1maws_scheduler_schedule.daily: Creating...[0m[0m
+[0m[1maws_scheduler_schedule.daily: Creation complete after 1s [id=default/qmatch-daily][0m
+[0m[1maws_subnet.public[0]: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_subnet.public[1]: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_security_group.mysql: Creation complete after 5s [id=sg-006aab8fd21c95991][0m
+[0m[1maws_security_group.pg: Creation complete after 6s [id=sg-0d857c367fcb84880][0m
+[0m[1maws_db_instance.mysql: Creating...[0m[0m
+[0m[1maws_db_instance.pg: Creating...[0m[0m
+[0m[1maws_subnet.public[0]: Creation complete after 13s [id=subnet-05248fb083fa4fd3f][0m
+[0m[1maws_subnet.public[1]: Creation complete after 13s [id=subnet-0fdac7daf39427887][0m
+[0m[1maws_route_table_association.public[0]: Creating...[0m[0m
+[0m[1maws_route_table_association.public[1]: Creating...[0m[0m
+[0m[1maws_nat_gateway.nat: Creating...[0m[0m
+[0m[1maws_route_table_association.public[0]: Creation complete after 1s [id=rtbassoc-0f26695be2770faa4][0m
+[0m[1maws_route_table_association.public[1]: Creation complete after 1s [id=rtbassoc-08f3f9107c7135c93][0m
+[0m[1maws_db_instance.pg: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_nat_gateway.nat: Still creating... [00m10s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [00m20s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [00m20s elapsed][0m[0m
+[0m[1maws_nat_gateway.nat: Still creating... [00m20s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [00m30s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [00m30s elapsed][0m[0m
+[0m[1maws_nat_gateway.nat: Still creating... [00m30s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [00m40s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [00m40s elapsed][0m[0m
+[0m[1maws_nat_gateway.nat: Still creating... [00m40s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [00m50s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [00m50s elapsed][0m[0m
+[0m[1maws_nat_gateway.nat: Still creating... [00m50s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [01m00s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [01m00s elapsed][0m[0m
+[0m[1maws_nat_gateway.nat: Still creating... [01m00s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [01m10s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [01m10s elapsed][0m[0m
+[0m[1maws_nat_gateway.nat: Still creating... [01m10s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [01m20s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [01m20s elapsed][0m[0m
+[0m[1maws_nat_gateway.nat: Still creating... [01m20s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [01m30s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [01m30s elapsed][0m[0m
+[0m[1maws_nat_gateway.nat: Still creating... [01m30s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [01m40s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [01m40s elapsed][0m[0m
+[0m[1maws_nat_gateway.nat: Still creating... [01m40s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [01m50s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [01m50s elapsed][0m[0m
+[0m[1maws_nat_gateway.nat: Still creating... [01m50s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [02m00s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [02m00s elapsed][0m[0m
+[0m[1maws_nat_gateway.nat: Creation complete after 2m0s [id=nat-0198ffb2ae5b73f18][0m
+[0m[1maws_route_table.private: Creating...[0m[0m
+[0m[1maws_route_table.private: Creation complete after 3s [id=rtb-0cfbe7831fb72775a][0m
+[0m[1maws_route_table_association.private[1]: Creating...[0m[0m
+[0m[1maws_route_table_association.private[0]: Creating...[0m[0m
+[0m[1maws_vpc_endpoint.s3: Creating...[0m[0m
+[0m[1maws_route_table_association.private[0]: Creation complete after 1s [id=rtbassoc-0c0ea5d798f341236][0m
+[0m[1maws_route_table_association.private[1]: Creation complete after 1s [id=rtbassoc-04e079eeb8c510f36][0m
+[0m[1maws_db_instance.mysql: Still creating... [02m10s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [02m10s elapsed][0m[0m
+[0m[1maws_vpc_endpoint.s3: Creation complete after 8s [id=vpce-02be3c299eccc6671][0m
+[0m[1maws_db_instance.mysql: Still creating... [02m20s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [02m20s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [02m30s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [02m30s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [02m40s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [02m40s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [02m50s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [02m50s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [03m00s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [03m00s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [03m10s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [03m10s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [03m20s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [03m20s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [03m30s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [03m30s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [03m40s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [03m40s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [03m50s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [03m50s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [04m00s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [04m00s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [04m10s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [04m10s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [04m20s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [04m20s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [04m30s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [04m30s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [04m40s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [04m40s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [04m50s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [04m50s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [05m00s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [05m00s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [05m10s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Still creating... [05m10s elapsed][0m[0m
+[0m[1maws_db_instance.pg: Creation complete after 5m15s [id=db-N6GO3FNIO7MJEPUZY3MSHQMYF4][0m
+[0m[1maws_secretsmanager_secret_version.pg: Creating...[0m[0m
+[0m[1maws_secretsmanager_secret_version.pg: Creation complete after 2s [id=arn:aws:secretsmanager:us-east-1:604723771349:secret:qmatch/postgres-qgWybm|terraform-20260624034133285200000008][0m
+[0m[1maws_db_instance.mysql: Still creating... [05m20s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [05m30s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [05m40s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Still creating... [05m50s elapsed][0m[0m
+[0m[1maws_db_instance.mysql: Creation complete after 5m58s [id=db-PKXJ3TFBCGRMJ6WHHRFLKCYWXY][0m
+[0m[1maws_secretsmanager_secret_version.mysql: Creating...[0m[0m
+[0m[1maws_secretsmanager_secret_version.mysql: Creation complete after 1s [id=arn:aws:secretsmanager:us-east-1:604723771349:secret:qmatch/mysql-jlibVn|terraform-20260624034215743600000009][0m
+[0m[1m[32m
+Apply complete! Resources: 56 added, 0 changed, 0 destroyed.[0m
+[0m[1m[32m
+Outputs:
+
+[0mcodebuild_project = "qmatch-image-build"
+container_name = "app"
+ecr_repository_url = "604723771349.dkr.ecr.us-east-1.amazonaws.com/qmatch-app"
+ecs_cluster_arn = "arn:aws:ecs:us-east-1:604723771349:cluster/qmatch-cluster"
+ecs_cluster_name = "qmatch-cluster"
+fargate_security_group_id = "sg-006c689a9697bb0cc"
+mysql_cluster_endpoint = "qmatch-mysql.cw16cmy2ko6v.us-east-1.rds.amazonaws.com"
+mysql_secret_arn = "arn:aws:secretsmanager:us-east-1:604723771349:secret:qmatch/mysql-jlibVn"
+pg_cluster_endpoint = "qmatch-pg.cw16cmy2ko6v.us-east-1.rds.amazonaws.com"
+pg_secret_arn = "arn:aws:secretsmanager:us-east-1:604723771349:secret:qmatch/postgres-qgWybm"
+private_subnet_ids = [
+  "subnet-03f0a48afb9906e41",
+  "subnet-0f9e55ccfab82b38b",
+]
+region = "us-east-1"
+run_task_network_config = "{\"awsvpcConfiguration\":{\"assignPublicIp\":\"DISABLED\",\"securityGroups\":[\"sg-006c689a9697bb0cc\"],\"subnets\":[\"subnet-03f0a48afb9906e41\",\"subnet-0f9e55ccfab82b38b\"]}}"
+s3_bucket = "qmatch-604723771349-us-east-1"
+sns_topic_arn = "arn:aws:sns:us-east-1:604723771349:qmatch-results"
+state_machine_arn = "arn:aws:states:us-east-1:604723771349:stateMachine:qmatch-consistency"
+task_definition_arn = "arn:aws:ecs:us-east-1:604723771349:task-definition/qmatch-task:1"
+task_definition_family = "qmatch-task"

@@ -1,0 +1,454 @@
+>> Starting execution run-20260624-092546
+>> Execution ARN: arn:aws:states:us-east-1:604723771349:execution:qmatch-consistency:run-20260624-092546
+   status=RUNNING
+   status=RUNNING
+   status=RUNNING
+   status=RUNNING
+   status=RUNNING
+   status=RUNNING
+   status=RUNNING
+   status=RUNNING
+   status=RUNNING
+   status=RUNNING
+   status=RUNNING
+   status=RUNNING
+   status=SUCCEEDED
+>> Report (s3://qmatch-604723771349-us-east-1/runs/run-20260624-092546/report.json):
+{
+    "run_id": "run-20260624-092546",
+    "totals": {
+        "queries": 20,
+        "consistent": 20,
+        "inconsistent": 0,
+        "errored": 0
+    },
+    "overall": "PASS",
+    "inconsistent_query_ids": [],
+    "errored_query_ids": [],
+    "results": [
+        {
+            "query_id": "Q01_total_orders",
+            "run_id": "run-20260624-092546",
+            "description": "Total number of orders",
+            "category": "aggregate/count",
+            "status": "consistent",
+            "postgres_columns": [
+                "order_count"
+            ],
+            "mysql_columns": [
+                "order_count"
+            ],
+            "postgres_ms": 29.4,
+            "mysql_ms": 32.1,
+            "consistent": true,
+            "postgres_row_count": 1,
+            "mysql_row_count": 1,
+            "postgres_hash": "96d981564f632af3aea5372088368ea3213cfb369f10f685b3a1b1586c57636a",
+            "mysql_hash": "96d981564f632af3aea5372088368ea3213cfb369f10f685b3a1b1586c57636a"
+        },
+        {
+            "query_id": "Q02_distinct_customers",
+            "run_id": "run-20260624-092546",
+            "description": "Distinct customers that placed at least one order",
+            "category": "aggregate/distinct",
+            "status": "consistent",
+            "postgres_columns": [
+                "c"
+            ],
+            "mysql_columns": [
+                "c"
+            ],
+            "postgres_ms": 57.1,
+            "mysql_ms": 40.3,
+            "consistent": true,
+            "postgres_row_count": 1,
+            "mysql_row_count": 1,
+            "postgres_hash": "00d8f70b52cc76e0154b0dcdfd51a79dd78133eda96eed908c2704855a873f5c",
+            "mysql_hash": "00d8f70b52cc76e0154b0dcdfd51a79dd78133eda96eed908c2704855a873f5c"
+        },
+        {
+            "query_id": "Q03_total_revenue",
+            "run_id": "run-20260624-092546",
+            "description": "Total revenue across all orders",
+            "category": "aggregate/sum",
+            "status": "consistent",
+            "postgres_columns": [
+                "revenue"
+            ],
+            "mysql_columns": [
+                "revenue"
+            ],
+            "postgres_ms": 223.6,
+            "mysql_ms": 39.2,
+            "consistent": true,
+            "postgres_row_count": 1,
+            "mysql_row_count": 1,
+            "postgres_hash": "72425dd28071a8abcf7e703b5edeea0a603131b696dcb969eb18a804cb161b8c",
+            "mysql_hash": "72425dd28071a8abcf7e703b5edeea0a603131b696dcb969eb18a804cb161b8c"
+        },
+        {
+            "query_id": "Q04_revenue_by_category",
+            "run_id": "run-20260624-092546",
+            "description": "Revenue grouped by product category (join + group by)",
+            "category": "join/group-by",
+            "status": "consistent",
+            "postgres_columns": [
+                "category",
+                "revenue"
+            ],
+            "mysql_columns": [
+                "category",
+                "revenue"
+            ],
+            "postgres_ms": 52.3,
+            "mysql_ms": 140.7,
+            "consistent": true,
+            "postgres_row_count": 8,
+            "mysql_row_count": 8,
+            "postgres_hash": "5f887c402f6dfe7666150ed3e0efb165963ce9e41fd8e62c7c1d19bd3bbb7af1",
+            "mysql_hash": "5f887c402f6dfe7666150ed3e0efb165963ce9e41fd8e62c7c1d19bd3bbb7af1"
+        },
+        {
+            "query_id": "Q05_orders_by_status",
+            "run_id": "run-20260624-092546",
+            "description": "Order count grouped by status",
+            "category": "group-by",
+            "status": "consistent",
+            "postgres_columns": [
+                "order_status",
+                "n"
+            ],
+            "mysql_columns": [
+                "order_status",
+                "n"
+            ],
+            "postgres_ms": 128.9,
+            "mysql_ms": 97.1,
+            "consistent": true,
+            "postgres_row_count": 5,
+            "mysql_row_count": 5,
+            "postgres_hash": "327e4e38611bcccaca76c2e48a8d5e26c5cdea3cf71a720f312485d3787fce9b",
+            "mysql_hash": "327e4e38611bcccaca76c2e48a8d5e26c5cdea3cf71a720f312485d3787fce9b"
+        },
+        {
+            "query_id": "Q06_top10_customers_by_spend",
+            "run_id": "run-20260624-092546",
+            "description": "Top 10 customers by total spend (deterministic tiebreak)",
+            "category": "join/group-by/limit",
+            "status": "consistent",
+            "postgres_columns": [
+                "customer_id",
+                "spend"
+            ],
+            "mysql_columns": [
+                "customer_id",
+                "spend"
+            ],
+            "postgres_ms": 361.7,
+            "mysql_ms": 141.9,
+            "consistent": true,
+            "postgres_row_count": 10,
+            "mysql_row_count": 10,
+            "postgres_hash": "9bbf9bb012bbaffab24678baa2e773a313dcc1dfebcf4bad8088515d740876be",
+            "mysql_hash": "9bbf9bb012bbaffab24678baa2e773a313dcc1dfebcf4bad8088515d740876be"
+        },
+        {
+            "query_id": "Q07_avg_amount_by_segment",
+            "run_id": "run-20260624-092546",
+            "description": "Average order amount by customer segment",
+            "category": "join/group-by/avg",
+            "status": "consistent",
+            "postgres_columns": [
+                "segment",
+                "avg_amount"
+            ],
+            "mysql_columns": [
+                "segment",
+                "avg_amount"
+            ],
+            "postgres_ms": 60.7,
+            "mysql_ms": 98.6,
+            "consistent": true,
+            "postgres_row_count": 4,
+            "mysql_row_count": 4,
+            "postgres_hash": "1209b05eacfd9356c065d09b42780818334b6be68aab34a80c2e45e2f95eb699",
+            "mysql_hash": "1209b05eacfd9356c065d09b42780818334b6be68aab34a80c2e45e2f95eb699"
+        },
+        {
+            "query_id": "Q08_monthly_revenue",
+            "run_id": "run-20260624-092546",
+            "description": "Revenue per calendar month (date formatting dialects)",
+            "category": "date-func/group-by",
+            "status": "consistent",
+            "postgres_columns": [
+                "ym",
+                "revenue"
+            ],
+            "mysql_columns": [
+                "ym",
+                "revenue"
+            ],
+            "postgres_ms": 203.6,
+            "mysql_ms": 56.1,
+            "consistent": true,
+            "postgres_row_count": 24,
+            "mysql_row_count": 24,
+            "postgres_hash": "e46bfc3d9389fa198361365bbff43ed68792562f8d24619f873c5e372aa4f6f0",
+            "mysql_hash": "e46bfc3d9389fa198361365bbff43ed68792562f8d24619f873c5e372aa4f6f0"
+        },
+        {
+            "query_id": "Q09_orders_by_country",
+            "run_id": "run-20260624-092546",
+            "description": "Order count per customer country",
+            "category": "join/group-by",
+            "status": "consistent",
+            "postgres_columns": [
+                "country",
+                "n"
+            ],
+            "mysql_columns": [
+                "country",
+                "n"
+            ],
+            "postgres_ms": 289.7,
+            "mysql_ms": 47.1,
+            "consistent": true,
+            "postgres_row_count": 10,
+            "mysql_row_count": 10,
+            "postgres_hash": "495f6d81f64ec3b8b3c43824bc4b8ff4d9f412cf058a9ec06d8e8361358c4574",
+            "mysql_hash": "495f6d81f64ec3b8b3c43824bc4b8ff4d9f412cf058a9ec06d8e8361358c4574"
+        },
+        {
+            "query_id": "Q10_customers_without_orders",
+            "run_id": "run-20260624-092546",
+            "description": "Count of customers that never ordered (anti-join)",
+            "category": "left-join/null",
+            "status": "consistent",
+            "postgres_columns": [
+                "c"
+            ],
+            "mysql_columns": [
+                "c"
+            ],
+            "postgres_ms": 187.5,
+            "mysql_ms": 39.9,
+            "consistent": true,
+            "postgres_row_count": 1,
+            "mysql_row_count": 1,
+            "postgres_hash": "9ce5f485357e50488b5bd1cce2b6a8e74eef2000174e0d84d86e886d1cecf6fe",
+            "mysql_hash": "9ce5f485357e50488b5bd1cce2b6a8e74eef2000174e0d84d86e886d1cecf6fe"
+        },
+        {
+            "query_id": "Q11_max_order_amount",
+            "run_id": "run-20260624-092546",
+            "description": "Largest single order amount",
+            "category": "aggregate/max",
+            "status": "consistent",
+            "postgres_columns": [
+                "max_amount"
+            ],
+            "mysql_columns": [
+                "max_amount"
+            ],
+            "postgres_ms": 45.9,
+            "mysql_ms": 25.7,
+            "consistent": true,
+            "postgres_row_count": 1,
+            "mysql_row_count": 1,
+            "postgres_hash": "8c9ba4bf52dcb50c04ff8dece0292341db3e7054e46879bfe865e3f90e5212c4",
+            "mysql_hash": "8c9ba4bf52dcb50c04ff8dece0292341db3e7054e46879bfe865e3f90e5212c4"
+        },
+        {
+            "query_id": "Q12_stats_by_category",
+            "run_id": "run-20260624-092546",
+            "description": "min/avg/max amount per product category",
+            "category": "join/group-by/stats",
+            "status": "consistent",
+            "postgres_columns": [
+                "category",
+                "mn",
+                "av",
+                "mx"
+            ],
+            "mysql_columns": [
+                "category",
+                "mn",
+                "av",
+                "mx"
+            ],
+            "postgres_ms": 60.7,
+            "mysql_ms": 112.8,
+            "consistent": true,
+            "postgres_row_count": 8,
+            "mysql_row_count": 8,
+            "postgres_hash": "1484dc69a14b3e36c222abe4ed3786f1f76da9aef2fcfdc03a8ee8840ea391d4",
+            "mysql_hash": "1484dc69a14b3e36c222abe4ed3786f1f76da9aef2fcfdc03a8ee8840ea391d4"
+        },
+        {
+            "query_id": "Q13_top10_products_by_qty",
+            "run_id": "run-20260624-092546",
+            "description": "Top 10 products by total quantity sold",
+            "category": "join/group-by/limit",
+            "status": "consistent",
+            "postgres_columns": [
+                "product_id",
+                "qty"
+            ],
+            "mysql_columns": [
+                "product_id",
+                "qty"
+            ],
+            "postgres_ms": 34.6,
+            "mysql_ms": 82.9,
+            "consistent": true,
+            "postgres_row_count": 10,
+            "mysql_row_count": 10,
+            "postgres_hash": "09ed830ca6562d0d5c2dc003ce5c41a3e2144d98fbdc7a1f9c1e4c4ff21b99ba",
+            "mysql_hash": "09ed830ca6562d0d5c2dc003ce5c41a3e2144d98fbdc7a1f9c1e4c4ff21b99ba"
+        },
+        {
+            "query_id": "Q14_orders_in_h1_2024",
+            "run_id": "run-20260624-092546",
+            "description": "Orders placed in H1 2024 (date range filter)",
+            "category": "filter/date-range",
+            "status": "consistent",
+            "postgres_columns": [
+                "c"
+            ],
+            "mysql_columns": [
+                "c"
+            ],
+            "postgres_ms": 32.7,
+            "mysql_ms": 30.5,
+            "consistent": true,
+            "postgres_row_count": 1,
+            "mysql_row_count": 1,
+            "postgres_hash": "11645cc02d109c3ed0c8b8b3472d0e54decd20960cbe78d568a077c402833ffb",
+            "mysql_hash": "11645cc02d109c3ed0c8b8b3472d0e54decd20960cbe78d568a077c402833ffb"
+        },
+        {
+            "query_id": "Q15_customers_name_starts_a",
+            "run_id": "run-20260624-092546",
+            "description": "Customers whose name starts with 'A' (LIKE)",
+            "category": "filter/string-like",
+            "status": "consistent",
+            "postgres_columns": [
+                "c"
+            ],
+            "mysql_columns": [
+                "c"
+            ],
+            "postgres_ms": 25.3,
+            "mysql_ms": 21.7,
+            "consistent": true,
+            "postgres_row_count": 1,
+            "mysql_row_count": 1,
+            "postgres_hash": "22f9cafa3b4347f0f73a742c59fc27c56f78b774fe0d7099c3b9469953d1a527",
+            "mysql_hash": "22f9cafa3b4347f0f73a742c59fc27c56f78b774fe0d7099c3b9469953d1a527"
+        },
+        {
+            "query_id": "Q16_high_value_orders",
+            "run_id": "run-20260624-092546",
+            "description": "Count of high value orders (amount > 500)",
+            "category": "filter/threshold",
+            "status": "consistent",
+            "postgres_columns": [
+                "c"
+            ],
+            "mysql_columns": [
+                "c"
+            ],
+            "postgres_ms": 34.9,
+            "mysql_ms": 36.0,
+            "consistent": true,
+            "postgres_row_count": 1,
+            "mysql_row_count": 1,
+            "postgres_hash": "c4f126a0442c9780eb361c00427d9efee6aaf0987604d722ac9b2559043b6890",
+            "mysql_hash": "c4f126a0442c9780eb361c00427d9efee6aaf0987604d722ac9b2559043b6890"
+        },
+        {
+            "query_id": "Q17_revenue_by_year",
+            "run_id": "run-20260624-092546",
+            "description": "Revenue per year (year extraction dialects)",
+            "category": "date-func/group-by",
+            "status": "consistent",
+            "postgres_columns": [
+                "yr",
+                "revenue"
+            ],
+            "mysql_columns": [
+                "yr",
+                "revenue"
+            ],
+            "postgres_ms": 75.3,
+            "mysql_ms": 39.6,
+            "consistent": true,
+            "postgres_row_count": 2,
+            "mysql_row_count": 2,
+            "postgres_hash": "7d1c8d7b4b875ece485db8189943a635d74c1cc99a071d38cba197dd0929d288",
+            "mysql_hash": "7d1c8d7b4b875ece485db8189943a635d74c1cc99a071d38cba197dd0929d288"
+        },
+        {
+            "query_id": "Q18_distinct_categories",
+            "run_id": "run-20260624-092546",
+            "description": "Number of distinct product categories",
+            "category": "aggregate/distinct",
+            "status": "consistent",
+            "postgres_columns": [
+                "c"
+            ],
+            "mysql_columns": [
+                "c"
+            ],
+            "postgres_ms": 40.7,
+            "mysql_ms": 12.5,
+            "consistent": true,
+            "postgres_row_count": 1,
+            "mysql_row_count": 1,
+            "postgres_hash": "19e18a9dddba3210d326602ef6fe5a53a55f11b573295e5a2fe237f0390b7f8f",
+            "mysql_hash": "19e18a9dddba3210d326602ef6fe5a53a55f11b573295e5a2fe237f0390b7f8f"
+        },
+        {
+            "query_id": "Q19_avg_qty_by_status",
+            "run_id": "run-20260624-092546",
+            "description": "Average quantity per order status (HAVING filter)",
+            "category": "group-by/having",
+            "status": "consistent",
+            "postgres_columns": [
+                "order_status",
+                "avg_qty"
+            ],
+            "mysql_columns": [
+                "order_status",
+                "avg_qty"
+            ],
+            "postgres_ms": 55.6,
+            "mysql_ms": 60.6,
+            "consistent": true,
+            "postgres_row_count": 5,
+            "mysql_row_count": 5,
+            "postgres_hash": "bc42341d352a59ee9a30c0a9a0d21b88cd8bceb8ee1b85ad0fbd867c9f15b81e",
+            "mysql_hash": "bc42341d352a59ee9a30c0a9a0d21b88cd8bceb8ee1b85ad0fbd867c9f15b81e"
+        },
+        {
+            "query_id": "Q20_distinct_country_segment",
+            "run_id": "run-20260624-092546",
+            "description": "Distinct country-segment combinations (string concat dialects)",
+            "category": "distinct/string-concat",
+            "status": "consistent",
+            "postgres_columns": [
+                "combo"
+            ],
+            "mysql_columns": [
+                "combo"
+            ],
+            "postgres_ms": 23.5,
+            "mysql_ms": 21.9,
+            "consistent": true,
+            "postgres_row_count": 40,
+            "mysql_row_count": 40,
+            "postgres_hash": "13934e1d0f080d695cc778e81d34f2f74dc34e83955a0058500830c3c269abbb",
+            "mysql_hash": "13934e1d0f080d695cc778e81d34f2f74dc34e83955a0058500830c3c269abbb"
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+# Pinned for reproducible builds across AWS accounts.
+boto3==1.34.162
+pandas==2.2.2
+openpyxl==3.1.5
+SQLAlchemy==2.0.32
+psycopg2-binary==2.9.9
+PyMySQL==1.1.1

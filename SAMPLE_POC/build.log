@@ -1,0 +1,8 @@
+>> Starting CodeBuild project: qmatch-image-build
+>> Build id: qmatch-image-build:3e9d5efd-3a69-4bce-9897-a9c51cad8ff1
+   status=IN_PROGRESS phase=PROVISIONING
+   status=IN_PROGRESS phase=PRE_BUILD
+   status=IN_PROGRESS phase=BUILD
+   status=IN_PROGRESS phase=POST_BUILD
+   status=SUCCEEDED phase=COMPLETED
+>> Image built and pushed.

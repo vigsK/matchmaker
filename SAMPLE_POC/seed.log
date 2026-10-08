@@ -1,0 +1,8 @@
+>> Launching seed task on qmatch-cluster
+>> Seed task: arn:aws:ecs:us-east-1:604723771349:task/qmatch-cluster/9bd1d7b34419470d857c044c0f4431f4
+>> Waiting for seed task to stop (this includes Aurora warm-up; can take several minutes)...
+   ...still running
+   ...still running
+   ...still running
+>> Seed exit code: 0 (reason: Essential container in task exited)
+>> Seed complete.

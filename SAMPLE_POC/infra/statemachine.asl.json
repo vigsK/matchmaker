@@ -1,0 +1,195 @@
+{
+  "Comment": "Cross-engine query consistency checker. Excel -> queries.json (prep), then a Distributed Map runs each query on PostgreSQL and MySQL in parallel and compares the result sets, then aggregates a report.",
+  "StartAt": "Initialize",
+  "States": {
+    "Initialize": {
+      "Type": "Pass",
+      "Comment": "Derive a stable run_id from the execution name; used as the S3 prefix for all artifacts of this run.",
+      "Parameters": {
+        "run_id.$": "$$.Execution.Name"
+      },
+      "Next": "PrepareQueries"
+    },
+
+    "PrepareQueries": {
+      "Type": "Task",
+      "Comment": "MODE=prep - read the Excel from S3, build the dataframe, write runs/<run_id>/queries.json.",
+      "Resource": "arn:aws:states:::ecs:runTask.sync",
+      "Parameters": {
+        "Cluster": "${cluster_arn}",
+        "TaskDefinition": "${task_def_arn}",
+        "LaunchType": "FARGATE",
+        "NetworkConfiguration": {
+          "AwsvpcConfiguration": {
+            "Subnets": ${subnets_json},
+            "SecurityGroups": ["${security_group}"],
+            "AssignPublicIp": "DISABLED"
+          }
+        },
+        "Overrides": {
+          "ContainerOverrides": [
+            {
+              "Name": "${container_name}",
+              "Environment": [
+                { "Name": "MODE", "Value": "prep" },
+                { "Name": "RUN_ID", "Value.$": "$.run_id" }
+              ]
+            }
+          ]
+        }
+      },
+      "Retry": [
+        {
+          "ErrorEquals": ["States.TaskFailed", "ECS.AmazonECSException", "States.Timeout"],
+          "IntervalSeconds": 10,
+          "MaxAttempts": 2,
+          "BackoffRate": 2.0
+        }
+      ],
+      "ResultPath": null,
+      "Next": "CompareAllQueries"
+    },
+
+    "CompareAllQueries": {
+      "Type": "Map",
+      "Comment": "Distributed Map: one parallel iteration per query, each running both engines and comparing.",
+      "ItemReader": {
+        "Resource": "arn:aws:states:::s3:getObject",
+        "ReaderConfig": {
+          "InputType": "JSON"
+        },
+        "Parameters": {
+          "Bucket": "${bucket}",
+          "Key.$": "States.Format('runs/{}/queries.json', $.run_id)"
+        }
+      },
+      "ItemSelector": {
+        "run_id.$": "$.run_id",
+        "query_id.$": "$$.Map.Item.Value.query_id"
+      },
+      "MaxConcurrency": ${max_concurrency},
+      "ToleratedFailurePercentage": 100,
+      "ItemProcessor": {
+        "ProcessorConfig": {
+          "Mode": "DISTRIBUTED",
+          "ExecutionType": "STANDARD"
+        },
+        "StartAt": "RunComparison",
+        "States": {
+          "RunComparison": {
+            "Type": "Task",
+            "Comment": "MODE=compare - run one query pair on both engines, compare, write result.",
+            "Resource": "arn:aws:states:::ecs:runTask.sync",
+            "Parameters": {
+              "Cluster": "${cluster_arn}",
+              "TaskDefinition": "${task_def_arn}",
+              "LaunchType": "FARGATE",
+              "NetworkConfiguration": {
+                "AwsvpcConfiguration": {
+                  "Subnets": ${subnets_json},
+                  "SecurityGroups": ["${security_group}"],
+                  "AssignPublicIp": "DISABLED"
+                }
+              },
+              "Overrides": {
+                "ContainerOverrides": [
+                  {
+                    "Name": "${container_name}",
+                    "Environment": [
+                      { "Name": "MODE", "Value": "compare" },
+                      { "Name": "RUN_ID", "Value.$": "$.run_id" },
+                      { "Name": "QUERY_ID", "Value.$": "$.query_id" }
+                    ]
+                  }
+                ]
+              }
+            },
+            "Retry": [
+              {
+                "ErrorEquals": ["ECS.AmazonECSException", "States.Timeout"],
+                "IntervalSeconds": 15,
+                "MaxAttempts": 2,
+                "BackoffRate": 2.0
+              },
+              {
+                "ErrorEquals": ["States.TaskFailed"],
+                "IntervalSeconds": 15,
+                "MaxAttempts": 1,
+                "BackoffRate": 2.0
+              }
+            ],
+            "Catch": [
+              {
+                "ErrorEquals": ["States.ALL"],
+                "ResultPath": "$.error",
+                "Next": "ComparisonFailed"
+              }
+            ],
+            "End": true
+          },
+          "ComparisonFailed": {
+            "Type": "Pass",
+            "Comment": "The compare task already persisted an error result to S3 before failing; surface a marker so the map iteration succeeds.",
+            "Parameters": {
+              "query_id.$": "$.query_id",
+              "status": "error"
+            },
+            "End": true
+          }
+        }
+      },
+      "ResultWriter": {
+        "Resource": "arn:aws:states:::s3:putObject",
+        "Parameters": {
+          "Bucket": "${bucket}",
+          "Prefix.$": "States.Format('runs/{}/map-output', $.run_id)"
+        }
+      },
+      "ResultPath": "$.map_results",
+      "Next": "Aggregate"
+    },
+
+    "Aggregate": {
+      "Type": "Task",
+      "Comment": "MODE=aggregate - collect every per-query verdict into report.json and notify SNS.",
+      "Resource": "arn:aws:states:::ecs:runTask.sync",
+      "Parameters": {
+        "Cluster": "${cluster_arn}",
+        "TaskDefinition": "${task_def_arn}",
+        "LaunchType": "FARGATE",
+        "NetworkConfiguration": {
+          "AwsvpcConfiguration": {
+            "Subnets": ${subnets_json},
+            "SecurityGroups": ["${security_group}"],
+            "AssignPublicIp": "DISABLED"
+          }
+        },
+        "Overrides": {
+          "ContainerOverrides": [
+            {
+              "Name": "${container_name}",
+              "Environment": [
+                { "Name": "MODE", "Value": "aggregate" },
+                { "Name": "RUN_ID", "Value.$": "$.run_id" }
+              ]
+            }
+          ]
+        }
+      },
+      "Retry": [
+        {
+          "ErrorEquals": ["States.TaskFailed", "ECS.AmazonECSException", "States.Timeout"],
+          "IntervalSeconds": 10,
+          "MaxAttempts": 2,
+          "BackoffRate": 2.0
+        }
+      ],
+      "ResultPath": null,
+      "Next": "Done"
+    },
+
+    "Done": {
+      "Type": "Succeed"
+    }
+  }
+}
