@@ -144,16 +144,6 @@ s3://<bucket>/runs/<run_id>/report.json        # aggregated PASS/FAIL summary
 
 ---
 
-## The 20 sample queries
-
-The workbook (`infra/seed/queries.xlsx`, generated from `src/app/queries.py`)
-has columns `query_id, description, category, postgres_sql, mysql_sql`. They
-exercise counts, sums, joins, group-by, `HAVING`, `LIMIT`, anti-joins, date
-functions (`TO_CHAR` vs `DATE_FORMAT`, `EXTRACT(YEAR…)` vs `YEAR()`), string
-functions (`||` vs `CONCAT`), and `DISTINCT` — i.e. real cross-dialect
-differences that must still produce identical *logical* output.
-
----
 
 ## Cost & teardown
 
